@@ -1,7 +1,7 @@
 {
-  "name": "habits",
+  "name": "@solarity/hardhat-habits",
   "version": "1.0.0",
-  "description": "Tool to calculate the Solidity Interface ID",
+  "description": "The tool designed to simplify working with Ethereum ABI.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
@@ -9,6 +9,7 @@
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
     "build": "tsc --build .",
+    "compile": "npm run prepare-tests && npm run build",
     "prepare-tests": "npm run compile --workspaces",
     "test": "mocha --recursive 'test/**/*.ts' --exit",
     "coverage": "nyc mocha --recursive 'test/**/*.ts' --exit",
@@ -20,12 +21,16 @@
     "test/fixture-projects/*"
   ],
   "keywords": [
-    "Solidity",
-    "ABI"
+    "solidity",
+    "ABI",
+    "smart-contracts",
+    "hardhat",
+    "distributedlab",
+    "solarity"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TBD.git"
+    "url": "git+https://github.com/dl-solarity/hardhat-habits.git"
   },
   "files": [
     "dist/src/",
@@ -36,11 +41,14 @@
   "author": "Distributed Lab",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TBD/issues"
+    "url": "https://github.com/dl-solarity/hardhat-habits/issues"
   },
-  "homepage": "https://github.com/TBD#readme",
+  "homepage": "https://github.com/dl-solarity/hardhat-habits#readme",
   "dependencies": {
-    "ethers": "^6.9.2"
+    "solidity-ast": "^0.4.55"
+  },
+  "peerDependencies": {
+    "hardhat": "^2.0.0"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
@@ -52,7 +60,7 @@
     "@types/mocha": "^10.0.6",
     "chai": "^4.3.10",
     "chai-as-promised": "^7.1.1",
-    "hardhat": "^2.17.0",
+    "ethers": "^6.9.2",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "pinst": "^3.0.0",

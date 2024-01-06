@@ -1,44 +1,31 @@
-import { ethers } from "ethers";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
 
-interface FragmentObject {
-  fragments: { format(format?: any): string; type: string }[];
-}
+import { ContractDefinition, FunctionDefinition, SourceUnit } from "solidity-ast";
 
-interface ABIObject {
-  abi?: ethers.InterfaceAbi;
-  interface?: ethers.Interface | FragmentObject;
-}
+import { findAll, isNodeType } from "solidity-ast/utils";
 
-export function getInterfaceID(abi: ABIObject | string) {
-  let contractInterface = resolveAbi(abi);
+export async function getInterfaceID(contractName: string) {
+  const hre = require("hardhat") as HardhatRuntimeEnvironment;
+
+  const contractArtifact = await hre.artifacts.readArtifact(contractName);
+  const buildInfo = await hre.artifacts.getBuildInfo(`${contractArtifact.sourceName}:${contractName}`);
+
+  const sourceUnit: SourceUnit = buildInfo!.output.sources[contractArtifact.sourceName].ast;
+  const contractNode: ContractDefinition = sourceUnit.nodes.find(
+    (node) => isNodeType("ContractDefinition", node) && node.name === contractName,
+  ) as ContractDefinition;
+
+  if (!contractNode) {
+    throw new Error(`Contract ${contractName} not found in ${contractArtifact.sourceName}`);
+  }
+
+  const allFunctions: FunctionDefinition[] = [...findAll("FunctionDefinition", contractNode)];
 
   let interfaceID = 0n;
 
-  for (const fragment of contractInterface.fragments) {
-    if (fragment.type !== "function") {
-      continue;
-    }
-
-    const signature = ethers.id(fragment.format("sighash")).substring(0, 10);
-
-    interfaceID = interfaceID ^ ethers.toBigInt(signature);
+  for (const functionDef of allFunctions) {
+    interfaceID = interfaceID ^ BigInt(`0x${functionDef.functionSelector!}`);
   }
 
   return "0x" + interfaceID.toString(16).padStart(8, "0");
-}
-
-function resolveAbi(abi: ABIObject | string) {
-  if (typeof abi === "string") {
-    return new ethers.Interface(abi);
-  }
-
-  if (abi.interface) {
-    return abi.interface;
-  }
-
-  if (abi.abi) {
-    return new ethers.Interface(abi.abi);
-  }
-
-  throw new Error("ABI object must have either abi or interface property");
 }

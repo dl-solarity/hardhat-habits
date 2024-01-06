@@ -34,8 +34,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
+      - name: Compile
+        run: npm run compile
 
       - name: Run All Node.js Tests
         run: npm run test

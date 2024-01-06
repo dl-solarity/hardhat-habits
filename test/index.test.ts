@@ -9,11 +9,6 @@ import { getInterfaceID } from "../src";
 
 import {
   ERC165Contract,
-  IERC20__factory,
-  IERC165__factory,
-  IERC5313__factory,
-  IERC1967__factory,
-  IERC1271__factory,
   ERC165Contract__factory,
 } from "./fixture-projects/hardhat-project-typechain-ethers/typechain-types";
 
@@ -29,15 +24,13 @@ describe("Interface Id Calculation", function () {
   });
 
   it("should calculate the correct interface id", async function () {
-    await expect(erc165Contract.supportsInterface(getInterfaceID(IERC20__factory))).to.be.eventually.true;
-    await expect(erc165Contract.supportsInterface(getInterfaceID(IERC1271__factory))).to.be.eventually.true;
-    await expect(erc165Contract.supportsInterface(getInterfaceID(IERC1967__factory))).to.be.eventually.true;
-    await expect(erc165Contract.supportsInterface(getInterfaceID(IERC5313__factory))).to.be.eventually.true;
-    await expect(erc165Contract.supportsInterface(getInterfaceID(IERC165__factory))).to.be.eventually.true;
-
-    // Not Supported
-    // await expect(erc165Contract.supportsInterface(getInterfaceID(IERC721Enumerable__factory))).to.be.eventually.true;
-    // await expect(erc165Contract.supportsInterface(getInterfaceID(IERC4626__factory))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC20"))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC1271"))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC1967"))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC5313"))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC165"))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC721Enumerable"))).to.be.eventually.true;
+    await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC4626"))).to.be.eventually.true;
 
     await expect(erc165Contract.supportsInterface("0xffffffff")).to.be.eventually.false;
   });

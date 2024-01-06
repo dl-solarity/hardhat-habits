@@ -10,8 +10,6 @@ import {IERC4626} from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import {IERC5313} from "@openzeppelin/contracts/interfaces/IERC5313.sol";
 import {IERC721Enumerable} from "@openzeppelin/contracts/interfaces/IERC721Enumerable.sol";
 
-interface IERC20Custom is IERC20, IERC1271 {}
-
 contract ERC165Contract is ERC165 {
     function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
         return
@@ -20,7 +18,7 @@ contract ERC165Contract is ERC165 {
             interfaceId == type(IERC5313).interfaceId ||
             interfaceId == type(IERC1271).interfaceId ||
             interfaceId == type(IERC4626).interfaceId ||
-            interfaceId == type(IERC20Custom).interfaceId ||
+            interfaceId == type(IERC721Enumerable).interfaceId ||
             super.supportsInterface(interfaceId);
     }
 }

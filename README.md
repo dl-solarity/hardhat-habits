@@ -18,7 +18,7 @@ To use the module, follow these steps:
 1. **Import the Module**:
 
 ```typescript
-import { getInterfaceID } from '[module-name]';
+import { getInterfaceID } from '@solarity/hardhat-habits';
 ```
 
 2. **Call the Function**:
@@ -34,7 +34,7 @@ Replace `'YourContractName'` with the name of your contract.
 
 ## Tasks
 
-This plugin does not add tasks to Hardhat.
+This plugin does not add tasks to the Hardhat Runtime Environment.
 
 ## Environment extensions
 

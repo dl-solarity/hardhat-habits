@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+.idea
+.eslintcache
+
+dist
+.nyc_output
+coverage
+
+# Optional npm cache directory
+.npm

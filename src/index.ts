@@ -23,7 +23,11 @@ export async function getInterfaceID(contractName: string) {
   let interfaceID = 0n;
 
   for (const functionDef of allFunctions) {
-    interfaceID = interfaceID ^ BigInt(`0x${functionDef.functionSelector!}`);
+    if (!functionDef.functionSelector) {
+      continue;
+    }
+
+    interfaceID = interfaceID ^ BigInt(`0x${functionDef.functionSelector}`);
   }
 
   return "0x" + interfaceID.toString(16).padStart(8, "0");

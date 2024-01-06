@@ -20,4 +20,12 @@ contract ERC165Contract is ERC165 {
             interfaceId == type(IERC721Enumerable).interfaceId ||
             super.supportsInterface(interfaceId);
     }
+
+    function _version() internal pure returns (string memory) {
+        return "1.0.0";
+    }
+
+    function _author() private pure returns (string memory) {
+        return "0x0";
+    }
 }

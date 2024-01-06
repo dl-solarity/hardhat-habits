@@ -31,6 +31,8 @@ describe("Interface Id Calculation", function () {
     await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC721Enumerable"))).to.be.eventually.true;
     await expect(erc165Contract.supportsInterface(await getInterfaceID("IERC4626"))).to.be.eventually.true;
 
+    expect(await getInterfaceID("IERC165")).to.be.equal(await getInterfaceID("ERC165Contract"));
+
     await expect(erc165Contract.supportsInterface("0xffffffff")).to.be.eventually.false;
   });
 });

@@ -1,7 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 import { ContractDefinition, FunctionDefinition, SourceUnit } from "solidity-ast";
-
 import { findAll, isNodeType } from "solidity-ast/utils";
 
 export async function getInterfaceID(contractName: string) {

@@ -2,7 +2,6 @@
 pragma solidity ^0.8.20;
 
 import {ERC165} from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
-
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC1271} from "@openzeppelin/contracts/interfaces/IERC1271.sol";
 import {IERC1967} from "@openzeppelin/contracts/interfaces/IERC1967.sol";

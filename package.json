@@ -1,7 +1,7 @@
 {
   "name": "@solarity/hardhat-habits",
   "version": "1.0.0",
-  "description": "The tool designed to simplify working with Ethereum ABI.",
+  "description": "The tool to work with Ethereum ABI",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/dl-solarity/hardhat-habits#readme",
   "dependencies": {
-    "solidity-ast": "^0.4.55"
+    "solidity-ast": "0.4.55"
   },
   "peerDependencies": {
     "hardhat": "^2.0.0"

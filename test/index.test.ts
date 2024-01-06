@@ -4,7 +4,6 @@ import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 
 import { useEnvironment } from "./helpers";
-
 import { getInterfaceID } from "../src";
 
 import {

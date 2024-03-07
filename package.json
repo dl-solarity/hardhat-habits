@@ -5,7 +5,7 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "postinstall": "npx husky install",
+    "prepare": "npx husky",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
     "build": "tsc --build .",
@@ -53,21 +53,22 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@openzeppelin/contracts": "^5.0.1",
-    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/ethers-v6": "^0.5.1",
     "@typechain/hardhat": "^9.1.0",
-    "@types/chai": "^4.3.11",
+    "@types/chai": "^4.3.12",
     "@types/chai-as-promised": "^7.1.8",
     "@types/mocha": "^10.0.6",
-    "chai": "^4.3.10",
+    "chai": "^4.4.1",
     "chai-as-promised": "^7.1.1",
-    "ethers": "^6.9.2",
-    "mocha": "^10.2.0",
+    "ethers": "^6.11.1",
+    "husky": "^9.0.11",
+    "mocha": "^10.3.0",
     "nyc": "^15.1.0",
     "pinst": "^3.0.0",
-    "prettier": "^3.0.3",
-    "ts-node": "^8.1.0",
-    "typechain": "^8.3.1",
-    "typescript": "^5.2.2"
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.3.3"
   },
   "nyc": {
     "reporter": [

@@ -1,13 +1,11 @@
 {
   "name": "@solarity/hardhat-habits",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The tool to work with Ethereum ABI",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "prepare": "npx husky",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable",
+    "prepare": "husky",
     "build": "tsc --build .",
     "compile": "npm run prepare-tests && npm run build",
     "prepare-tests": "npm run compile --workspaces",
@@ -65,10 +63,10 @@
     "husky": "^9.0.11",
     "mocha": "^10.3.0",
     "nyc": "^15.1.0",
-    "pinst": "^3.0.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typechain": "^8.3.2",
+    
     "typescript": "^5.3.3"
   },
   "nyc": {
